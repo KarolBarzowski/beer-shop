@@ -8,5 +8,9 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: 'Poppins, sans-serif',
+    h1: {
+      fontSize: 34,
+      fontWeight: 500
+    }
   }
 });

@@ -1,9 +1,13 @@
-import { GlobalStyle } from 'theme/GlobalStyle';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from 'theme/theme';
+import Home from 'views/Home';
 
 const Root = () => (
-  <>
-    <GlobalStyle />
-  </>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Home />
+  </ThemeProvider>
 );
 
 export default Root;

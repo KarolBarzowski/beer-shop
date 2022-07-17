@@ -4,6 +4,8 @@ import { api, endpoints } from 'api';
 import { Grid, Typography } from '@mui/material';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 
+const per_page = 8;
+
 const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -21,7 +23,7 @@ const Home = () => {
     setIsLoading(true);
 
     api
-      .get<Beer[]>(endpoints.beers, { params: { per_page: 8, page } })
+      .get<Beer[]>(endpoints.beers, { params: { per_page, page } })
       .then(({ data }) => {
         setBeers((prevState) => [...prevState, ...data]);
         setPage((prevState) => prevState + 1);
@@ -57,14 +59,16 @@ const Home = () => {
       <Typography variant="h1" align="center" gutterBottom>
         Our beers
       </Typography>
-      <Grid container>
-        {beers.map(({ id, name, image_url }, i) =>
-          i === beers.length - 1 ? (
-            <BeerItem key={id} name={name} src={image_url} ref={lastBeerRef} />
-          ) : (
-            <BeerItem key={id} name={name} src={image_url} />
-          )
-        )}
+      <Grid container rowSpacing={2} columnSpacing={2}>
+        {beers.map(({ id, name, image_url, tagline }: Beer, i: number) => (
+          <BeerItem
+            key={id}
+            name={name}
+            src={image_url}
+            tagline={tagline}
+            ref={i === beers.length - 1 ? lastBeerRef : null}
+          />
+        ))}
       </Grid>
     </>
   );

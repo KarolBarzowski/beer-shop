@@ -13,6 +13,7 @@ export const Wrapper = styled.button<WrapperProps>`
   border: 1px solid ${({theme}) => theme.colors.primary};;
   cursor: pointer;
   text-transform: lowercase;
+  text-decoration: none;
 
   :hover {
     text-decoration: underline;

@@ -7,11 +7,12 @@ const shortName = 'Beer name';
 const longName = 'Very long Beer name over 20 letters';
 const src = 'https://via.placeholder.com/150';
 const tagline = 'Beer tagline';
+const id = 123;
 
 describe('BeerItem test', () => {
   it('Renders the component', () => {
     renderWithThemeProvider(
-      <BeerItem name={shortName} src={src} tagline={tagline} />
+      <BeerItem id={id} name={shortName} src={src} tagline={tagline} />
     );
 
     expect(screen.getByText(shortName)).toBeInTheDocument();
@@ -21,7 +22,7 @@ describe('BeerItem test', () => {
 
   it('Properly handles long beer name', () => {
     renderWithThemeProvider(
-      <BeerItem name={longName} src={src} tagline={tagline} />
+      <BeerItem id={id} name={longName} src={src} tagline={tagline} />
     );
 
     expect(screen.getByRole('heading', { level: 5 })).toHaveTextContent(

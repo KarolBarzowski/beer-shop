@@ -59,6 +59,7 @@ const Home = () => {
       {beers.map(({ id, name, image_url, tagline }: Beer, i: number) => (
         <BeerItem
           key={id}
+          id={id}
           name={name}
           src={image_url}
           tagline={tagline}

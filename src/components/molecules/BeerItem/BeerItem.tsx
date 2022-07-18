@@ -12,6 +12,7 @@ import {
 import Button from 'components/atoms/Button/Button';
 
 interface BeerItemProps {
+  id: number;
   name: string;
   src: string;
   tagline: string;
@@ -19,7 +20,7 @@ interface BeerItemProps {
 
 const BeerItem = forwardRef<HTMLDivElement, BeerItemProps>(
   (
-    { name, src, tagline }: BeerItemProps,
+    { id, name, src, tagline }: BeerItemProps,
     ref: React.ForwardedRef<HTMLDivElement>
   ) => (
     <Wrapper ref={ref}>
@@ -32,7 +33,9 @@ const BeerItem = forwardRef<HTMLDivElement, BeerItemProps>(
       </Content>
       <Actions>
         <Button>Add to cart</Button>
-        <Button text>Read more</Button>
+        <Button text id={id}>
+          Read more
+        </Button>
       </Actions>
     </Wrapper>
   )

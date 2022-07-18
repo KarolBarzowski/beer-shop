@@ -32,7 +32,7 @@ const BeerItem = forwardRef<HTMLDivElement, BeerItemProps>(
       </Content>
       <Actions>
         <Button>Add to cart</Button>
-        <Button>Read More</Button>
+        <Button text>Read more</Button>
       </Actions>
     </Wrapper>
   )

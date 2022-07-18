@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  border: 1px solid black;
-  padding: 12px;
+  padding: 8px;
 `;
 
 export const Name = styled.h5`
@@ -18,11 +17,23 @@ export const Tagline = styled.p`
   font-size: ${({theme}) => theme.fontSize.medium};
   font-family: ${({theme}) => theme.fontFamily.elite};
   color: ${({theme}) => theme.colors.text};
-  font-weight: ${({theme}) => theme.fontWeight.regular}
+  font-weight: ${({theme}) => theme.fontWeight.regular};
 `;
 
 export const ImageWrapper = styled.div`
+  position: relative;
   text-align: center;
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-color: ${({theme}) => theme.colors.primary};
+    z-index: -1;
+  }
 `;
 
 export const Content = styled.div`

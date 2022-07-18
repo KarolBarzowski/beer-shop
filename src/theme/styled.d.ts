@@ -12,6 +12,7 @@ declare module 'styled-components' {
       elite: string;
     },
     fontSize: {
+      huge: string;
       big: string;
       medium: string;
       small: string;

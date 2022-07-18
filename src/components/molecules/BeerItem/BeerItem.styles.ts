@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  padding: 8px;
 `;
 
 export const Name = styled.h5`

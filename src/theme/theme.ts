@@ -11,6 +11,7 @@ export const theme: DefaultTheme = {
     elite: "'Special Elite', cursive"
   },
   fontSize: {
+    huge: "34px",
     big: "21px",
     medium: "16px",
     small: "13px"

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.primary};
+export const ButtonLink = styled(Link)<{ outlined?: boolean }>`
+  background-color: ${({ theme, outlined }) =>
+    outlined ? 'transparent' : theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.medium};
   font-family: ${({ theme }) => theme.fontFamily.elite};
   color: ${({ theme }) => theme.colors.text};
@@ -16,4 +18,4 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export default ButtonLink;

@@ -10,6 +10,7 @@ import {
   Actions
 } from './BeerItem.styles';
 import Button from 'components/atoms/Button/Button';
+import ButtonLink from 'components/atoms/ButtonLink/ButtonLink';
 
 interface BeerItemProps {
   id: number;
@@ -33,9 +34,9 @@ const BeerItem = forwardRef<HTMLDivElement, BeerItemProps>(
       </Content>
       <Actions>
         <Button>Add to cart</Button>
-        <Button text id={id}>
+        <ButtonLink to={`/beer/${id}`} outlined>
           Read more
-        </Button>
+        </ButtonLink>
       </Actions>
     </Wrapper>
   )

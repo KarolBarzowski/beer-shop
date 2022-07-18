@@ -1,20 +1,10 @@
-import Box from '@mui/material/Box';
+import { Img } from './Image.styles';
 
 interface ImageProps {
   src: string;
   alt: string;
 }
 
-const Image = ({ src, alt }: ImageProps) => (
-  <Box
-    component="img"
-    sx={{
-      height: 250,
-      width: 'auto'
-    }}
-    alt={alt}
-    src={src}
-  />
-);
+const Image = ({ src, alt }: ImageProps) => <Img alt={alt} src={src} />;
 
 export default Image;

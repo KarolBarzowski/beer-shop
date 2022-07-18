@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Beer } from 'interfaces/Beer.interface';
 import { api, endpoints } from 'api';
-import { Grid, Typography } from '@mui/material';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
+import { Grid } from './Home.styles';
 
 const per_page = 8;
 
@@ -55,22 +55,17 @@ const Home = () => {
   }, [fetchAPI]);
 
   return (
-    <>
-      <Typography variant="h1" align="center" gutterBottom>
-        Our beers
-      </Typography>
-      <Grid container rowSpacing={2} columnSpacing={2}>
-        {beers.map(({ id, name, image_url, tagline }: Beer, i: number) => (
-          <BeerItem
-            key={id}
-            name={name}
-            src={image_url}
-            tagline={tagline}
-            ref={i === beers.length - 1 ? lastBeerRef : null}
-          />
-        ))}
-      </Grid>
-    </>
+    <Grid>
+      {beers.map(({ id, name, image_url, tagline }: Beer, i: number) => (
+        <BeerItem
+          key={id}
+          name={name}
+          src={image_url}
+          tagline={tagline}
+          ref={i === beers.length - 1 ? lastBeerRef : null}
+        />
+      ))}
+    </Grid>
   );
 };
 

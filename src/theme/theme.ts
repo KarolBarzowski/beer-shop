@@ -1,16 +1,17 @@
-import { createTheme } from '@mui/material/styles';
+import { DefaultTheme } from "styled-components"
 
-export const theme = createTheme({
-  palette: {
-    background: {
-      default: '#f2f7fa'
-    }
+export const theme: DefaultTheme = {
+  colors: {
+    text: "rgba(0, 0, 0, .87)",
+    textSecondary: "rgba(0, 0, 0, .60)"
   },
-  typography: {
-    fontFamily: 'Poppins, sans-serif',
-    h1: {
-      fontSize: 34,
-      fontWeight: 500
-    }
+  fontFamily: {
+    rubik: "'Rubik Moonrocks', cursive",
+    elite: "'Special Elite', cursive"
+  },
+  fontSize: {
+    big: "21px",
+    medium: "16px",
+    small: "13px"
   }
-});
+}

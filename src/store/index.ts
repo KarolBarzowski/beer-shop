@@ -1,36 +1,15 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { beersApi } from 'store/api/beers';
+import { cartSlice } from 'store/slices/cart';
 
-interface CartInterface {
-  id: number;
-  quantity: number;
-}
-
-const initialCartState: CartInterface[] = [
-  {
-    id: 1,
-    quantity: 1,
-  },
-];
-
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: initialCartState,
-  reducers: {
-    addBeer(state, action) {
-      state.push({
-        ...action.payload,
-      });
-    },
-    removeBeer(state, action) {
-      return state.filter((beer) => beer.id !== action.payload.id);
-    },
-  },
-});
-
-export const { addBeer, removeBeer } = cartSlice.actions;
+export * from 'store/api/beers';
+export * from 'store/slices/cart';
 
 export const store = configureStore({
   reducer: {
+    [beersApi.reducerPath]: beersApi.reducer,
     cart: cartSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(beersApi.middleware),
 });

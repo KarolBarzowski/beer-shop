@@ -1,69 +1,49 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Beer } from 'interfaces/Beer.interface';
-import { api, endpoints } from 'api';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 import { Grid } from './Home.styles';
-
-const per_page = 8;
+import { useLazyGetBeersQuery } from 'store';
+import debounce from 'lodash.debounce';
 
 const Home = () => {
   const [page, setPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [beers, setBeers] = useState<Beer[]>([]);
-  const lastBeerRef = useRef<HTMLDivElement | null>(null);
-  const observer = useRef<IntersectionObserver | null>(null);
+  const [trigger, data] = useLazyGetBeersQuery();
 
   useEffect(() => {
-    fetchAPI();
-  }, []);
+    trigger(page);
+  }, [page]);
 
-  const fetchAPI = useCallback(() => {
-    if (isLoading) return;
+  useEffect(() => {
+    setBeers((prevState) => [...prevState, ...(data.data ?? [])]);
+  }, [data.data]);
 
-    setIsLoading(true);
+  useEffect(() => {
+    const handleScroll = debounce(() => {
+      const { offsetHeight } = document.body;
+      const { innerHeight, scrollY } = window;
 
-    api
-      .get<Beer[]>(endpoints.beers, { params: { per_page, page } })
-      .then(({ data }) => {
-        setBeers((prevState) => [...prevState, ...data]);
+      if (innerHeight + scrollY >= offsetHeight - 100) {
         setPage((prevState) => prevState + 1);
-        setIsLoading(false);
-      })
-      .catch((error) => console.log(error));
-  }, [isLoading, page]);
-
-  useEffect(() => {
-    const options = {
-      root: document,
-      threshold: 1
-    };
-
-    function callback(entries: IntersectionObserverEntry[]) {
-      if (entries[0].isIntersecting) {
-        fetchAPI();
       }
-    }
+    }, 300);
 
-    observer.current = new IntersectionObserver(callback, options);
-    if (lastBeerRef.current) {
-      observer.current.observe(lastBeerRef.current);
-    }
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      if (observer.current) observer.current.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [fetchAPI]);
+  }, []);
 
   return (
     <Grid>
-      {beers.map(({ id, name, image_url, tagline }: Beer, i: number) => (
+      {beers.map(({ id, name, image_url, tagline }: Beer) => (
         <BeerItem
           key={id}
           id={id}
           name={name}
           src={image_url}
           tagline={tagline}
-          ref={i === beers.length - 1 ? lastBeerRef : null}
         />
       ))}
     </Grid>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Beer } from 'interfaces/Beer.interface';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
+import Loading from 'components/molecules/Loading/Loading';
 import { Grid } from './Home.styles';
 import { useLazyGetBeersQuery } from 'store';
 import debounce from 'lodash.debounce';
@@ -8,15 +9,15 @@ import debounce from 'lodash.debounce';
 const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [beers, setBeers] = useState<Beer[]>([]);
-  const [trigger, data] = useLazyGetBeersQuery();
+  const [trigger, { data, isFetching }] = useLazyGetBeersQuery();
 
   useEffect(() => {
     trigger(page);
   }, [page]);
 
   useEffect(() => {
-    setBeers((prevState) => [...prevState, ...(data.data ?? [])]);
-  }, [data.data]);
+    setBeers((prevState) => [...prevState, ...(data ?? [])]);
+  }, [data]);
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -26,7 +27,7 @@ const Home = () => {
       if (innerHeight + scrollY >= offsetHeight - 100) {
         setPage((prevState) => prevState + 1);
       }
-    }, 300);
+    }, 200);
 
     window.addEventListener('scroll', handleScroll);
 
@@ -36,17 +37,20 @@ const Home = () => {
   }, []);
 
   return (
-    <Grid>
-      {beers.map(({ id, name, image_url, tagline }: Beer) => (
-        <BeerItem
-          key={id}
-          id={id}
-          name={name}
-          src={image_url}
-          tagline={tagline}
-        />
-      ))}
-    </Grid>
+    <>
+      {isFetching ? <Loading /> : null}
+      <Grid>
+        {beers.map(({ id, name, image_url, tagline }: Beer) => (
+          <BeerItem
+            key={id}
+            id={id}
+            name={name}
+            src={image_url}
+            tagline={tagline}
+          />
+        ))}
+      </Grid>
+    </>
   );
 };
 

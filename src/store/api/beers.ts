@@ -8,7 +8,7 @@ export const beersApi = createApi({
   tagTypes: ['Beers'],
   endpoints: (builder) => ({
     getBeers: builder.query<Beer[], number>({
-      query: (page) => `/beers?per_page=8&page=${page}`,
+      query: (page) => `/beers?per_page=20&page=${page}`,
       providesTags: ['Beers'],
     }),
   }),

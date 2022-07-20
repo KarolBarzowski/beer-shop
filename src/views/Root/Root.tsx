@@ -8,7 +8,7 @@ const Root = () => (
   <MainTemplate>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/beer/:beerId" element={<Details />} />
+      <Route path="/beer/:id" element={<Details />} />
       <Route path="/cart" element={<Cart />} />
     </Routes>
   </MainTemplate>

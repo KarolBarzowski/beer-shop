@@ -11,7 +11,10 @@ export const beersApi = createApi({
       query: (page) => `/beers?per_page=20&page=${page}`,
       providesTags: ['Beers'],
     }),
+    getBeersById: builder.query<Beer[], string[]>({
+      query: (id) => `/beers?ids=${id.map((id) => `${id}|`)}`,
+    }),
   }),
 });
 
-export const { useLazyGetBeersQuery } = beersApi;
+export const { useLazyGetBeersQuery, useGetBeersByIdQuery } = beersApi;

@@ -2,7 +2,7 @@ import { Wrapper, Heading } from './Loading.styles';
 
 const Loading = () => (
   <Wrapper>
-    <Heading>Loading more beers...</Heading>
+    <Heading>Loading...</Heading>
   </Wrapper>
 );
 

@@ -1,10 +1,8 @@
-import { Img } from './Image.styles';
+import styled from 'styled-components';
 
-interface ImageProps {
-  src: string;
-  alt: string;
-}
-
-const Image = ({ src, alt }: ImageProps) => <Img alt={alt} src={src} />;
+const Image = styled.img<{ big?: boolean }>`
+  height: ${({ big }) => (big ? '500px' : '250px')};
+  width: auto;
+`;
 
 export default Image;

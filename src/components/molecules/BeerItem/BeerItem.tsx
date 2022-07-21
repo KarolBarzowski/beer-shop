@@ -38,7 +38,7 @@ const BeerItem = ({ id, name, src, tagline }: BeerItemProps) => {
       </Content>
       <Actions>
         <Button onClick={handleAddBeerToCart}>Add to cart</Button>
-        <ButtonLink to={`/beer/${id}`} outlined>
+        <ButtonLink to={`/beer/${id}`} outlined="true">
           Read more
         </ButtonLink>
       </Actions>

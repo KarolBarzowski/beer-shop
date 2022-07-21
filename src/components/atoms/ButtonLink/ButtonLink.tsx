@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const ButtonLink = styled(Link)<{ outlined?: boolean }>`
+export const ButtonLink = styled(Link)<{ outlined?: string }>`
   background-color: ${({ theme, outlined }) =>
-    outlined ? 'transparent' : theme.colors.primary};
+    outlined === "true" ? 'transparent' : theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.medium};
   font-family: ${({ theme }) => theme.fontFamily.elite};
   color: ${({ theme }) => theme.colors.text};

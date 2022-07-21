@@ -19,7 +19,7 @@ const Details = () => {
   const dispatch = useDispatch();
 
   const handleAddBeerToCart = () => {
-    dispatch(addBeer({ id, quantity: 1 }));
+    if (id !== undefined) dispatch(addBeer({ id: parseInt(id), quantity: 1 }));
   };
 
   if (isLoading) return <Loading />;
@@ -44,7 +44,7 @@ const Details = () => {
           <Description>Food pairing</Description>
           <Indent>
             {data[0].food_pairing.map((text) => (
-              <Description>{text}</Description>
+              <Description key={text}>{text}</Description>
             ))}
           </Indent>
         </div>

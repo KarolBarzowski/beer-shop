@@ -4,7 +4,7 @@
 
 ## Technologies Used
 - React (Typescript)
-- Redux
+- Redux (Redux Toolkit)
 - styled-components
 - API ([Punk API](https://punkapi.com/))
 

@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { addBeer } from 'store';
-import Image from 'components/atoms/Image/Image';
 import { getShortBeerName } from 'helpers/helperFunctions';
+import Button from 'components/atoms/Button/Button';
+import ButtonLink from 'components/atoms/ButtonLink/ButtonLink';
+import Image from 'components/atoms/Image/Image';
+import ImagePlaceholder from 'components/atoms/ImagePlaceholder/ImagePlaceholder';
 import {
   Wrapper,
   Name,
@@ -10,8 +13,6 @@ import {
   Content,
   Actions
 } from './BeerItem.styles';
-import Button from 'components/atoms/Button/Button';
-import ButtonLink from 'components/atoms/ButtonLink/ButtonLink';
 
 interface BeerItemProps {
   id: number;
@@ -29,9 +30,13 @@ const BeerItem = ({ id, name, src, tagline }: BeerItemProps) => {
 
   return (
     <Wrapper>
-      <ImageWrapper>
-        <Image src={src} alt={name} />
-      </ImageWrapper>
+      {src ? (
+        <ImageWrapper>
+          <Image src={src} alt={name} />
+        </ImageWrapper>
+      ) : (
+        <ImagePlaceholder />
+      )}
       <Content>
         <Name>{name.length > 20 ? getShortBeerName(name) : name}</Name>
         <Tagline>{tagline}</Tagline>

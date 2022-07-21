@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import Loading from 'components/molecules/Loading/Loading';
 import Button from 'components/atoms/Button/Button';
 import Image from 'components/atoms/Image/Image';
+import ImagePlaceholder from 'components/atoms/ImagePlaceholder/ImagePlaceholder';
 import {
   Wrapper,
   Name,
@@ -33,7 +34,11 @@ const Details = () => {
 
   return (
     <Wrapper>
-      <Image big src={data[0].image_url} alt={data[0].name} />
+      {data[0].image_url ? (
+        <Image big src={data[0].image_url} alt={data[0].name} />
+      ) : (
+        <ImagePlaceholder />
+      )}
       <Content>
         <Name>{data[0].name}</Name>
         <Tagline>{data[0].tagline}</Tagline>

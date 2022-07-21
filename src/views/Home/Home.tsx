@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useLazyGetBeersQuery } from 'store';
+import debounce from 'lodash.debounce';
 import { Beer } from 'interfaces/Beer.interface';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 import Loading from 'components/molecules/Loading/Loading';
 import { Grid } from './Home.styles';
-import { useLazyGetBeersQuery } from 'store';
-import debounce from 'lodash.debounce';
 
 const Home = () => {
   const [page, setPage] = useState<number>(1);

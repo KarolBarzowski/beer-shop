@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartInterface } from 'interfaces/Cart.interface';
 
-const initialState: CartInterface[] = [];
+const initialState: CartInterface[] = [
+  { id: 2, quantity: 2 },
+  { id: 3, quantity: 1 },
+  { id: 250, quantity: 1 },
+  { id: 300, quantity: 4 },
+];
 
 export const cartSlice = createSlice({
   name: 'cart',

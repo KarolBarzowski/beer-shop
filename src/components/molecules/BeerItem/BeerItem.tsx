@@ -13,15 +13,9 @@ import {
   Content,
   Actions
 } from './BeerItem.styles';
+import { ItemProps } from 'interfaces/Item.interface';
 
-interface BeerItemProps {
-  id: number;
-  name: string;
-  src: string;
-  tagline: string;
-}
-
-const BeerItem = ({ id, name, src, tagline }: BeerItemProps) => {
+const BeerItem = ({ id, name, src, tagline }: ItemProps) => {
   const dispatch = useDispatch();
 
   const handleAddBeerToCart = () => {

@@ -12,7 +12,7 @@ export const beersApi = createApi({
       providesTags: ['Beers'],
     }),
     getBeersById: builder.query<Beer[], string[]>({
-      query: (id) => `/beers?ids=${id.map((id) => `${id}|`)}`,
+      query: (id) => `/beers?ids=${id.join('|')}`,
     }),
   }),
 });

@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ small?: boolean }>`
   position: relative;
-  height: 250px;
-  width: 250px;
+  height: ${({ small }) => (small ? '125px' : '250px')};
+  width: ${({ small }) => (small ? '75px' : '250px')};
   background-color: #eee;
-  margin: 0 auto;
+  margin: ${({ small }) => (small ? '0' : '0 auto')};
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const Paragraph = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fontSize.small};
   font-family: ${({ theme }) => theme.fontFamily.elite};
   color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: ${({ theme }) => theme.fontWeight.regular};

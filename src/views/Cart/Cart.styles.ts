@@ -1,14 +1,22 @@
 import styled from 'styled-components';
+import { mediaQueries } from 'theme/mediaQueries';
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-flow: row wrap;
 `;
 
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin: auto 0;
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+
+  ${mediaQueries('md')`
+    width: 50%;
+  `};
 `;
 
 export const Paragraph = styled.p`

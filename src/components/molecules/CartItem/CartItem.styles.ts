@@ -11,7 +11,7 @@ export const Image = styled.img`
 `;
 
 export const Name = styled.h5`
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fontSize.big};
   font-family: ${({ theme }) => theme.fontFamily.rubik};
   color: ${({ theme }) => theme.colors.text};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
@@ -19,7 +19,7 @@ export const Name = styled.h5`
 `;
 
 export const Tagline = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.small};
+  font-size: ${({ theme }) => theme.fontSize.medium};
   font-family: ${({ theme }) => theme.fontFamily.elite};
   color: ${({ theme }) => theme.colors.text};
   font-weight: ${({ theme }) => theme.fontWeight.regular};

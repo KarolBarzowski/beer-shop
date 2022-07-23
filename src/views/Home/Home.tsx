@@ -1,23 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useLazyGetBeersQuery } from 'store';
+import { useEffect, useContext } from 'react';
 import debounce from 'lodash.debounce';
 import { Beer } from 'interfaces/Beer.interface';
+import { BeersContext } from 'providers/BeersProvider';
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 import Loading from 'components/molecules/Loading/Loading';
 import { Grid } from './Home.styles';
 
 const Home = () => {
-  const [page, setPage] = useState<number>(1);
-  const [beers, setBeers] = useState<Beer[]>([]);
-  const [trigger, { data, isFetching }] = useLazyGetBeersQuery();
-
-  useEffect(() => {
-    trigger(page);
-  }, [page]);
-
-  useEffect(() => {
-    setBeers((prevState) => [...prevState, ...(data ?? [])]);
-  }, [data]);
+  const { beers, setPage, isFetching } = useContext(BeersContext);
 
   useEffect(() => {
     const handleScroll = debounce(() => {

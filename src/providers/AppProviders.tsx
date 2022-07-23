@@ -4,14 +4,17 @@ import { GlobalStyle } from 'theme/GlobalStyle';
 import { theme } from 'theme/theme';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import BeersProvider from './BeersProvider';
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => (
   <Provider store={store}>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
+      <BeersProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      </BeersProvider>
     </BrowserRouter>
   </Provider>
 );

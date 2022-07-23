@@ -11,11 +11,12 @@ export const Box = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
-  height: calc(100vh - 200px);
+  height: auto;
   overflow-y: auto;
 
   ${mediaQueries('md')`
     width: 50%;
+    height: calc(100vh - 200px);
   `};
 `;
 

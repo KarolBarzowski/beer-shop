@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { CartInterface } from 'interfaces/Cart.interface';
 
 const Navigation = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
   const { pathname } = useLocation();
   const data = useSelector((state: { cart: CartInterface[] }) => state.cart);
 

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from 'views/Home/Home';
-import Details from 'views/Details/Details';
-import Cart from 'views/Cart/Cart';
+import Home from 'views/Home';
+import Details from 'views/Details';
+import Cart from 'views/Cart';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 
 const Root = () => (

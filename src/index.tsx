@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import Root from 'views/Root/Root';
+import Root from 'views/Root';
 import reportWebVitals from './reportWebVitals';
 import AppProviders from 'providers/AppProviders';
 

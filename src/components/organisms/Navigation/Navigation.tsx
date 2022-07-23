@@ -21,7 +21,7 @@ const Navigation = () => {
   return (
     <Wrapper>
       {pathname !== '/' ? (
-        <ButtonLink to="/">back</ButtonLink>
+        <ButtonLink to="/">home</ButtonLink>
       ) : (
         <Placeholder />
       )}

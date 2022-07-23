@@ -1,6 +1,6 @@
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 import { screen } from '@testing-library/react';
-import { getShortBeerName } from 'helpers/helperFunctions';
+import { getShortBeerName } from 'helpers/getShortBeerName';
 import { renderWithThemeProvider } from 'helpers/renderWithThemeProvider';
 
 const shortName = 'Beer name';

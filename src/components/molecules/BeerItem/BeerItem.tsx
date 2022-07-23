@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addBeer } from 'store';
-import { getShortBeerName } from 'helpers/helperFunctions';
+import { getShortBeerName } from 'helpers/getShortBeerName';
 import Button from 'components/atoms/Button/Button';
 import ButtonLink from 'components/atoms/ButtonLink/ButtonLink';
 import Image from 'components/atoms/Image/Image';

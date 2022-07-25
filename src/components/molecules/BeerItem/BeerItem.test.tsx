@@ -1,7 +1,7 @@
 import BeerItem from 'components/molecules/BeerItem/BeerItem';
 import { screen } from '@testing-library/react';
 import { getShortBeerName } from 'helpers/getShortBeerName';
-import { renderWithThemeProvider } from 'helpers/renderWithThemeProvider';
+import { renderWithAppProviders } from 'helpers/renderWithAppProviders';
 
 const shortName = 'Beer name';
 const longName = 'Very long Beer name over 20 letters';
@@ -11,7 +11,7 @@ const id = 123;
 
 describe('BeerItem test', () => {
   it('Renders the component', () => {
-    renderWithThemeProvider(
+    renderWithAppProviders(
       <BeerItem id={id} name={shortName} src={src} tagline={tagline} />
     );
 
@@ -21,7 +21,7 @@ describe('BeerItem test', () => {
   });
 
   it('Properly handles long beer name', () => {
-    renderWithThemeProvider(
+    renderWithAppProviders(
       <BeerItem id={id} name={longName} src={src} tagline={tagline} />
     );
 

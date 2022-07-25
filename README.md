@@ -1,6 +1,8 @@
 # Beer shop
 
-> Project in progress
+> Shop application made while learning React with Typescript
+
+> Live: https://dummybeershop.netlify.app
 
 ## Technologies Used
 - React (Typescript)

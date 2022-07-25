@@ -10,3 +10,4 @@
 - API ([Punk API](https://punkapi.com/))
 - styled-components
 - react-hook-form
+- Jest, React Testing Library, Cypress

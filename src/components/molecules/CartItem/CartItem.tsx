@@ -43,7 +43,7 @@ const CartItem = ({ id, name, tagline, src }: ItemProps) => {
           <ButtonIcon type="button" onClick={handleRemoveBeer}>
             -
           </ButtonIcon>
-          <Paragraph>{itemData?.quantity}</Paragraph>
+          <Paragraph aria-label="quantity">{itemData?.quantity}</Paragraph>
           <ButtonIcon type="button" onClick={handleAddBeer}>
             +
           </ButtonIcon>

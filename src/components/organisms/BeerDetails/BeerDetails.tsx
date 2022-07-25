@@ -41,14 +41,16 @@ const BeerDetails = ({
         <ImagePlaceholder />
       )}
       <Content>
-        <Name>{data[0].name}</Name>
-        <Tagline>{data[0].tagline}</Tagline>
-        <Description>{data[0].abv}% alcohol</Description>
-        <Description>{data[0].description}</Description>
+        <Name aria-label="name">{data[0].name}</Name>
+        <Tagline aria-label="tagline">{data[0].tagline}</Tagline>
+        <Description aria-label="alcohol">{data[0].abv}% alcohol</Description>
+        <Description aria-label="description">
+          {data[0].description}
+        </Description>
         <Button onClick={handleAddBeerToCart}>Add to cart</Button>
         <div>
           <Description>Food pairing</Description>
-          <Indent>
+          <Indent aria-label="food pairing">
             {data[0].food_pairing.map((text) => (
               <Description key={text}>{text}</Description>
             ))}

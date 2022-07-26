@@ -12,7 +12,7 @@ const FormField = forwardRef<HTMLInputElement, InputProps>(
     return (
       <Wrapper>
         <Label htmlFor={id}>{label}</Label>
-        <Input type={type} id={id} ref={ref} {...props} />
+        <Input type={type} id={id} ref={ref} {...props} data-testid={label} />
       </Wrapper>
     );
   }

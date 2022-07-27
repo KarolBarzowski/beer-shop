@@ -1,5 +1,5 @@
 import Form from 'components/organisms/Form/Form';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { renderWithAppProviders } from 'helpers/renderWithAppProviders';
 
 describe('Form test', () => {
@@ -30,12 +30,16 @@ describe('Form test', () => {
   it('Validates Postal Code', async () => {
     renderWithAppProviders(<Form onSubmit={() => null} />);
 
+    fireEvent.submit(screen.getByRole('button', { name: /buy/i }));
+
     fireEvent.change(screen.getByTestId('Postal code'), {
       target: { value: '12345' }
     });
-    fireEvent.submit(screen.getByRole('button', { name: /buy/i }));
-    expect(
-      await screen.findByText(/postal code is wrong/i)
-    ).toBeInTheDocument();
+    await screen.findByText(/postal code is wrong/i);
+
+    fireEvent.change(screen.getByTestId('Postal code'), {
+      target: { value: '' }
+    });
+    await screen.findByText(/postal code is required/i);
   });
 });
